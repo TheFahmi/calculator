@@ -1,39 +1,39 @@
 # Calculator Next
 
-Aplikasi kalkulator modern yang dibangun dengan Next.js 14 dan teknologi web terkini.
+A modern calculator application built with Next.js 14 and the latest web technologies.
 
 [![Deployed on Netlify](https://img.shields.io/badge/Netlify-Deployed-success)](https://calculator-fahmi.windsurf.build)
 [![GitHub](https://img.shields.io/github/license/TheFahmi/calculator)](https://github.com/TheFahmi/calculator)
 
 ![Calculator Preview](public/calculator-preview.png)
 
-## Fitur
+## Features
 
-- 🧮 Mode kalkulator standar
-- 📊 Mode kalkulator ilmiah dengan fungsi trigonometri dan logaritma
-- 🔄 Konverter unit untuk panjang, berat, suhu, dan lainnya
-- 🌙 Mode gelap/terang dengan next-themes
-- ✨ Animasi halus dengan Framer Motion
-- 📱 Responsif untuk semua ukuran layar
-- 🔊 Dukungan input suara (coming soon)
+- 🧮 Standard calculator mode
+- 📊 Scientific calculator with trigonometric and logarithmic functions
+- 🔄 Unit converter for length, weight, temperature, and more
+- 🌙 Dark/light mode with next-themes
+- ✨ Smooth animations with Framer Motion
+- 📱 Responsive for all screen sizes
+- 🔊 Voice input support (coming soon)
 
 ## Tech Stack
 
-- **Framework**: [Next.js 14](https://nextjs.org/) dengan App Router
-- **Bahasa**: [TypeScript](https://www.typescriptlang.org/)
+- **Framework**: [Next.js 14](https://nextjs.org/) with App Router
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animasi**: [Framer Motion](https://www.framer.com/motion/)
-- **Tema**: [Next-themes](https://github.com/pacocoursey/next-themes)
-- **Matematika**: [Math.js](https://mathjs.org/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Theming**: [Next-themes](https://github.com/pacocoursey/next-themes)
+- **Mathematics**: [Math.js](https://mathjs.org/)
 
 ## Getting Started
 
-### Prasyarat
+### Prerequisites
 
-- Node.js 18.0.0 atau yang lebih baru
-- npm, yarn, atau pnpm
+- Node.js 18.0.0 or newer
+- npm, yarn, or pnpm
 
-### Instalasi
+### Installation
 
 ```bash
 # Clone repository
@@ -42,51 +42,51 @@ cd calculator
 
 # Install dependencies
 npm install
-# atau
+# or
 yarn install
-# atau
+# or
 pnpm install
 ```
 
-### Menjalankan Aplikasi
+### Running the Application
 
 ```bash
 # Development server
 npm run dev
-# atau
+# or
 yarn dev
-# atau
+# or
 pnpm dev
 ```
 
-Buka [http://localhost:3000](http://localhost:3000) di browser Anda untuk melihat aplikasi.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
 ## Deployment
 
-Aplikasi ini telah di-deploy menggunakan Netlify dan dapat diakses di:
+This application has been deployed using Netlify and can be accessed at:
 
 [https://calculator-fahmi.windsurf.build](https://calculator-fahmi.windsurf.build)
 
-### Deploy Sendiri
+### Deploy Your Own
 
-Untuk men-deploy aplikasi ini ke Netlify:
+To deploy this application to Netlify:
 
-1. Fork repository ini
-2. Buat akun Netlify jika belum memilikinya
-3. Hubungkan repository GitHub Anda dengan Netlify
-4. Atur konfigurasi build:
+1. Fork this repository
+2. Create a Netlify account if you don't have one
+3. Connect your GitHub repository to Netlify
+4. Configure the build settings:
    - Build command: `npm run build`
    - Publish directory: `.next`
 
-## Kontribusi
+## Contributing
 
-Kontribusi selalu diterima! Silakan buat issue atau pull request jika Anda ingin berkontribusi.
+Contributions are always welcome! Please feel free to create an issue or pull request if you want to contribute.
 
-## Lisensi
+## License
 
-Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
-## Kontak
+## Contact
 
 Muhammad Fahmi Hassan - [GitHub](https://github.com/TheFahmi)
 
