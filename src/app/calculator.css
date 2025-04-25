@@ -1,0 +1,1456 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Theme Variables */
+  --theme-transition: all 0.3s ease;
+
+  /* Light Theme Colors (Default) */
+  --light-bg-gradient-1: rgb(230, 230, 250);
+  --light-bg-gradient-2: rgb(210, 210, 240);
+  --light-calculator-background: rgba(255, 255, 255, 0.25);
+  --light-calculator-border: rgba(255, 255, 255, 0.3);
+  --light-button-background: rgba(255, 255, 255, 0.2);
+  --light-button-hover: rgba(255, 255, 255, 0.3);
+  --light-button-active: rgba(255, 255, 255, 0.4);
+  --light-text-color: #333333;
+  --light-text-secondary: rgba(50, 50, 50, 0.8);
+  --light-neomorph-bg: rgba(240, 240, 255, 0.7);
+  --light-neomorph-shadow-dark: rgba(180, 180, 200, 0.5);
+  --light-neomorph-shadow-light: rgba(255, 255, 255, 0.5);
+  --light-neomorph-highlight: rgba(255, 255, 255, 0.1);
+
+  /* Dark Theme Colors */
+  --dark-bg-gradient-1: rgb(10, 10, 20);
+  --dark-bg-gradient-2: rgb(20, 20, 35);
+  --dark-calculator-background: rgba(20, 20, 35, 0.7);
+  --dark-calculator-border: rgba(0, 0, 0, 0.2);
+  --dark-button-background: rgba(30, 30, 45, 0.7);
+  --dark-button-hover: rgba(40, 40, 60, 0.8);
+  --dark-button-active: rgba(50, 50, 70, 0.9);
+  --dark-text-color: #e0e0e0;
+  --dark-text-secondary: rgba(224, 224, 224, 0.7);
+  --dark-neomorph-bg: rgba(25, 25, 40, 0.8);
+  --dark-neomorph-shadow-dark: rgba(5, 5, 10, 0.6);
+  --dark-neomorph-shadow-light: rgba(40, 40, 60, 0.1);
+  --dark-neomorph-highlight: rgba(255, 255, 255, 0.02);
+
+  /* Active Theme Colors (Default to Light) */
+  --calculator-background: var(--light-calculator-background);
+  --calculator-border: var(--light-calculator-border);
+  --button-background: var(--light-button-background);
+  --button-hover: var(--light-button-hover);
+  --button-active: var(--light-button-active);
+  --text-color: var(--light-text-color);
+  --text-secondary: var(--light-text-secondary);
+  --neomorph-bg: var(--light-neomorph-bg);
+  --neomorph-shadow-dark: var(--light-neomorph-shadow-dark);
+  --neomorph-shadow-light: var(--light-neomorph-shadow-light);
+  --neomorph-highlight: var(--light-neomorph-highlight);
+
+  /* Primary accent color - muted purple */
+  --primary-color: 110, 90, 180;
+  --primary-light: rgba(var(--primary-color), 0.25);
+  --primary-medium: rgba(var(--primary-color), 0.4);
+  --primary-dark: rgba(var(--primary-color), 0.6);
+
+  /* Light theme accent colors */
+  --light-primary-color: 100, 80, 170;
+  --light-primary-light: rgba(var(--light-primary-color), 0.3);
+  --light-primary-medium: rgba(var(--light-primary-color), 0.5);
+  --light-primary-dark: rgba(var(--light-primary-color), 0.7);
+
+  /* Secondary accent color - teal */
+  --secondary-color: 80, 200, 180;
+  --secondary-light: rgba(var(--secondary-color), 0.3);
+  --secondary-medium: rgba(var(--secondary-color), 0.5);
+  --secondary-dark: rgba(var(--secondary-color), 0.7);
+
+  /* Light theme secondary colors */
+  --light-secondary-color: 70, 180, 160;
+  --light-secondary-light: rgba(var(--light-secondary-color), 0.4);
+  --light-secondary-medium: rgba(var(--light-secondary-color), 0.6);
+  --light-secondary-dark: rgba(var(--light-secondary-color), 0.8);
+
+  /* Operator and equals button colors - will be overridden by theme classes */
+  --operator-background: var(--primary-light);
+  --operator-hover: var(--primary-medium);
+  --operator-active: var(--primary-dark);
+  --equals-background: var(--secondary-light);
+  --equals-hover: var(--secondary-medium);
+  --equals-active: var(--secondary-dark);
+
+  /* UI colors */
+  --error-color: #ff5b5b;
+  --mode-button-active: var(--primary-medium);
+  --tab-active: var(--primary-medium);
+  --quiz-correct: rgba(80, 200, 120, 0.6);
+  --quiz-incorrect: rgba(255, 91, 91, 0.6);
+
+  /* Glass Effect Variables */
+  --glass-blur: 16px;
+  --glass-border: 1px;
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  --glass-highlight: rgba(255, 255, 255, 0.07);
+  --inner-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 1px rgba(0, 0, 0, 0.1);
+
+  /* Neomorphism Effect Variables */
+  --neomorph-distance: 4px;
+  --neomorph-blur: 8px;
+  --neomorph-pressed: 3px;
+  --neomorph-inset-distance: 6px;
+  --neomorph-inset-blur: 8px;
+  --button-active-scale: 0.97;
+}
+
+/* Light Theme Class (Default) */
+:root {
+  --operator-background: var(--light-primary-light);
+  --operator-hover: var(--light-primary-medium);
+  --operator-active: var(--light-primary-dark);
+  --equals-background: var(--light-secondary-light);
+  --equals-hover: var(--light-secondary-medium);
+  --equals-active: var(--light-secondary-dark);
+}
+
+/* Dark Theme Class */
+.dark-theme {
+  --calculator-background: var(--dark-calculator-background);
+  --calculator-border: var(--dark-calculator-border);
+  --button-background: var(--dark-button-background);
+  --button-hover: var(--dark-button-hover);
+  --button-active: var(--dark-button-active);
+  --text-color: var(--dark-text-color);
+  --text-secondary: var(--dark-text-secondary);
+  --neomorph-bg: var(--dark-neomorph-bg);
+  --neomorph-shadow-dark: var(--dark-neomorph-shadow-dark);
+  --neomorph-shadow-light: var(--dark-neomorph-shadow-light);
+  --neomorph-highlight: var(--dark-neomorph-highlight);
+
+  /* Reset operator and equals colors for dark theme */
+  --operator-background: var(--primary-light);
+  --operator-hover: var(--primary-medium);
+  --operator-active: var(--primary-dark);
+  --equals-background: var(--secondary-light);
+  --equals-hover: var(--secondary-medium);
+  --equals-active: var(--secondary-dark);
+}
+
+.calculator {
+  width: 400px;
+  margin: 2rem auto;
+  background: var(--neomorph-bg);
+  border-radius: 24px;
+  box-shadow:
+    15px 15px 30px var(--neomorph-shadow-dark),
+    -15px -15px 30px var(--neomorph-shadow-light);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--glass-border) solid var(--calculator-border);
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  transition: var(--theme-transition);
+  /* Tidak perlu padding-top tambahan karena history button sudah fixed position */
+}
+
+/* Utility Section */
+.utility-section {
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(var(--primary-color), 0.05);
+  border-radius: 24px 24px 0 0;
+}
+
+/* Utility Controls Area */
+.utility-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Theme Toggle */
+.theme-toggle-btn, .voice-btn, .voice-help-btn, .advanced-toggle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--neomorph-bg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--theme-transition);
+  box-shadow:
+    var(--neomorph-distance) var(--neomorph-distance) var(--neomorph-blur) var(--neomorph-shadow-dark),
+    calc(-1 * var(--neomorph-distance)) calc(-1 * var(--neomorph-distance)) var(--neomorph-blur) var(--neomorph-shadow-light);
+}
+
+.theme-toggle-btn:hover, .voice-btn:hover, .voice-help-btn:hover, .advanced-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-blur) + 3px) var(--neomorph-shadow-dark),
+    calc(-1 * (var(--neomorph-distance) + 1px)) calc(-1 * (var(--neomorph-distance) + 1px)) calc(var(--neomorph-blur) + 3px) var(--neomorph-shadow-light);
+}
+
+.theme-toggle-btn:active, .voice-btn:active, .voice-help-btn:active, .advanced-toggle-btn:active, .advanced-toggle-btn.active {
+  transform: scale(var(--button-active-scale));
+  box-shadow:
+    0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 rgba(255, 255, 255, 0),
+    inset var(--neomorph-inset-distance) var(--neomorph-inset-distance) var(--neomorph-inset-blur) var(--neomorph-shadow-dark),
+    inset calc(-1 * var(--neomorph-inset-distance)) calc(-1 * var(--neomorph-inset-distance)) var(--neomorph-inset-blur) var(--neomorph-shadow-light);
+}
+
+.calculator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neomorph-highlight),
+    transparent
+  );
+  z-index: 2;
+}
+
+.calculator::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.1),
+    transparent
+  );
+  z-index: 2;
+}
+
+.calculator-display {
+  position: relative;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.15);
+  text-align: right;
+  border-bottom: 1px solid var(--calculator-border);
+  transition: all 0.3s ease;
+  box-shadow: var(--inner-shadow);
+  border-radius: 0;
+}
+
+.calculator-display::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  z-index: 2;
+}
+
+#expression {
+  font-size: 16px;
+  color: var(--text-secondary);
+  min-height: 24px;
+  margin-bottom: 10px;
+  word-break: break-all;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.display-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#display {
+  font-size: 40px;
+  color: var(--text-color);
+  font-weight: 300;
+  word-break: break-all;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: right;
+  margin-right: 12px;
+  letter-spacing: 1px;
+}
+
+.voice-controls {
+  display: flex;
+  gap: 10px;
+}
+
+/* Voice button styles are now handled by the utility controls styles */
+
+.voice-btn i, .voice-help-btn i {
+  font-size: 18px;
+  color: var(--text-color);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.voice-btn.listening {
+  background: rgba(255, 50, 50, 0.6);
+  border-color: rgba(255, 50, 50, 0.2);
+  animation: pulse 1.5s infinite;
+  box-shadow:
+    0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 rgba(255, 255, 255, 0),
+    inset var(--neomorph-inset-distance) var(--neomorph-inset-distance) var(--neomorph-inset-blur) rgba(255, 50, 50, 0.3),
+    inset calc(-1 * var(--neomorph-inset-distance)) calc(-1 * var(--neomorph-inset-distance)) var(--neomorph-inset-blur) rgba(255, 50, 50, 0.05);
+  transform: scale(var(--button-active-scale));
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 50, 50, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 50, 50, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 50, 50, 0);
+  }
+}
+
+.error-message {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  background: var(--error-color);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s, transform 0.3s;
+  text-align: left;
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.error-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.calculator-mode {
+  display: flex;
+  overflow-x: auto;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  gap: 10px;
+  border-bottom: 1px solid var(--calculator-border);
+  box-shadow: var(--inner-shadow);
+  -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none;  /* Hide scrollbar for Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.calculator-mode::-webkit-scrollbar {
+  display: none;
+}
+
+.calculator-mode .mode-button {
+  flex: 1;
+  padding: 12px 8px;
+  font-size: 12px;
+  background: var(--neomorph-bg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 14px;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  min-width: 60px;
+  box-shadow:
+    var(--neomorph-distance) var(--neomorph-distance) var(--neomorph-blur) var(--neomorph-shadow-dark),
+    calc(-1 * var(--neomorph-distance)) calc(-1 * var(--neomorph-distance)) var(--neomorph-blur) var(--neomorph-shadow-light);
+  transform: translateY(0);
+}
+
+.mode-button i {
+  font-size: 16px;
+  margin-bottom: 4px;
+  opacity: 0.9;
+}
+
+.calculator-mode .mode-button:hover {
+  background: var(--button-hover);
+  transform: translateY(-1px);
+  box-shadow:
+    calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-blur) + 3px) var(--neomorph-shadow-dark),
+    calc(-1 * (var(--neomorph-distance) + 1px)) calc(-1 * (var(--neomorph-distance) + 1px)) calc(var(--neomorph-blur) + 3px) var(--neomorph-shadow-light);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.calculator-mode .mode-button.active {
+  background: var(--mode-button-active);
+  transform: none;
+  box-shadow:
+    0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 rgba(255, 255, 255, 0),
+    inset var(--neomorph-inset-distance) var(--neomorph-inset-distance) var(--neomorph-inset-blur) rgba(var(--primary-color), 0.3),
+    inset calc(-1 * var(--neomorph-inset-distance)) calc(-1 * var(--neomorph-inset-distance)) var(--neomorph-inset-blur) rgba(var(--primary-color), 0.05);
+  border-color: rgba(var(--primary-color), 0.2);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.mode-content {
+  width: 100%;
+  display: block;
+}
+
+.calculator-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 12px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+button {
+  padding: 18px 10px;
+  border: none;
+  outline: none;
+  background: var(--neomorph-bg);
+  color: var(--text-color);
+  font-size: 18px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    var(--neomorph-distance) var(--neomorph-distance) var(--neomorph-blur) var(--neomorph-shadow-dark),
+    calc(-1 * var(--neomorph-distance)) calc(-1 * var(--neomorph-distance)) var(--neomorph-blur) var(--neomorph-shadow-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transform: translateY(0);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neomorph-highlight),
+    transparent
+  );
+  z-index: 1;
+}
+
+button:hover {
+  background: var(--button-hover);
+  box-shadow:
+    calc(var(--neomorph-distance) + 2px) calc(var(--neomorph-distance) + 2px) calc(var(--neomorph-blur) + 5px) var(--neomorph-shadow-dark),
+    calc(-1 * (var(--neomorph-distance) + 2px)) calc(-1 * (var(--neomorph-distance) + 2px)) calc(var(--neomorph-blur) + 5px) var(--neomorph-shadow-light);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+button:active {
+  background: var(--button-active);
+  box-shadow:
+    0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 rgba(255, 255, 255, 0),
+    inset var(--neomorph-inset-distance) var(--neomorph-inset-distance) var(--neomorph-inset-blur) var(--neomorph-shadow-dark),
+    inset calc(-1 * var(--neomorph-inset-distance)) calc(-1 * var(--neomorph-inset-distance)) var(--neomorph-inset-blur) var(--neomorph-shadow-light);
+  transform: scale(var(--button-active-scale));
+  transition: all 0.1s ease;
+  border-color: rgba(255, 255, 255, 0.02);
+}
+
+.operator {
+  background: var(--operator-background);
+  font-weight: bold;
+  border-color: rgba(var(--primary-color), 0.1);
+  color: var(--text-color);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    var(--neomorph-distance) var(--neomorph-distance) var(--neomorph-blur) rgba(var(--primary-color), 0.2),
+    calc(-1 * var(--neomorph-distance)) calc(-1 * var(--neomorph-distance)) var(--neomorph-blur) var(--neomorph-shadow-light);
+}
+
+.dark-theme .operator {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.operator:hover {
+  background: var(--operator-hover);
+  border-color: rgba(var(--primary-color), 0.15);
+  box-shadow:
+    calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-blur) + 3px) rgba(var(--primary-color), 0.2),
+    calc(-1 * (var(--neomorph-distance) + 1px)) calc(-1 * (var(--neomorph-distance) + 1px)) calc(var(--neomorph-blur) + 3px) var(--neomorph-shadow-light);
+}
+
+.operator:active, .operator.active {
+  background: var(--operator-active);
+  border-color: rgba(var(--primary-color), 0.2);
+  box-shadow:
+    0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 rgba(255, 255, 255, 0),
+    inset var(--neomorph-inset-distance) var(--neomorph-inset-distance) var(--neomorph-inset-blur) rgba(var(--primary-color), 0.25),
+    inset calc(-1 * var(--neomorph-inset-distance)) calc(-1 * var(--neomorph-inset-distance)) var(--neomorph-inset-blur) rgba(var(--primary-color), 0.05);
+  transform: scale(var(--button-active-scale));
+}
+
+.equals {
+  background: var(--equals-background);
+  font-weight: bold;
+  border-color: rgba(var(--secondary-color), 0.1);
+  color: var(--text-color);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    var(--neomorph-distance) var(--neomorph-distance) var(--neomorph-blur) rgba(var(--secondary-color), 0.3),
+    calc(-1 * var(--neomorph-distance)) calc(-1 * var(--neomorph-distance)) var(--neomorph-blur) var(--neomorph-shadow-light);
+}
+
+.dark-theme .equals {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.equals:hover {
+  background: var(--equals-hover);
+  border-color: rgba(var(--secondary-color), 0.2);
+  box-shadow:
+    calc(var(--neomorph-distance) + 2px) calc(var(--neomorph-distance) + 2px) calc(var(--neomorph-blur) + 5px) rgba(var(--secondary-color), 0.25),
+    calc(-1 * (var(--neomorph-distance) + 2px)) calc(-1 * (var(--neomorph-distance) + 2px)) calc(var(--neomorph-blur) + 5px) var(--neomorph-shadow-light);
+}
+
+.equals:active {
+  background: var(--equals-active);
+  border-color: rgba(var(--secondary-color), 0.3);
+  box-shadow:
+    0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 rgba(255, 255, 255, 0),
+    inset var(--neomorph-inset-distance) var(--neomorph-inset-distance) var(--neomorph-inset-blur) rgba(var(--secondary-color), 0.3),
+    inset calc(-1 * var(--neomorph-inset-distance)) calc(-1 * var(--neomorph-inset-distance)) var(--neomorph-inset-blur) rgba(var(--secondary-color), 0.05);
+  transform: scale(var(--button-active-scale));
+}
+
+.zero-btn {
+  grid-column: span 2;
+}
+
+.number {
+  font-weight: 500;
+}
+
+.scientific-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 12px;
+  padding: 15px 20px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--calculator-border);
+}
+
+.sci-operator {
+  font-size: 14px;
+  background: rgba(130, 106, 237, 0.2);
+  font-weight: 500;
+}
+
+/* Advanced Keypad Styles */
+.advanced-keypad {
+  display: grid;
+  grid-gap: 12px;
+  padding: 15px 20px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--calculator-border);
+}
+
+.advanced-keypad-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 12px;
+  width: 100%;
+}
+
+.advanced-btn {
+  padding: 12px 8px;
+  font-size: 16px;
+  border-radius: 14px;
+}
+
+.adv-operator {
+  background: rgba(var(--primary-color), 0.2);
+  font-weight: 500;
+}
+
+.adv-function {
+  background: rgba(var(--secondary-color), 0.2);
+  font-weight: 500;
+}
+
+.adv-constant {
+  background: rgba(80, 120, 200, 0.2);
+  font-weight: 500;
+}
+
+.adv-variable {
+  background: rgba(200, 120, 80, 0.2);
+  font-weight: 500;
+}
+
+/* History Styles */
+.history-toggle-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1001;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--neomorph-bg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--theme-transition);
+  box-shadow:
+    var(--neomorph-distance) var(--neomorph-distance) var(--neomorph-blur) var(--neomorph-shadow-dark),
+    calc(-1 * var(--neomorph-distance)) calc(-1 * var(--neomorph-distance)) var(--neomorph-blur) var(--neomorph-shadow-light);
+}
+
+.history-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-blur) + 3px) var(--neomorph-shadow-dark),
+    calc(-1 * (var(--neomorph-distance) + 1px)) calc(-1 * (var(--neomorph-distance) + 1px)) calc(var(--neomorph-blur) + 3px) var(--neomorph-shadow-light);
+}
+
+.history-toggle-btn:active, .history-toggle-btn.active {
+  transform: scale(var(--button-active-scale));
+  box-shadow:
+    0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 rgba(255, 255, 255, 0),
+    inset var(--neomorph-inset-distance) var(--neomorph-inset-distance) var(--neomorph-inset-blur) var(--neomorph-shadow-dark),
+    inset calc(-1 * var(--neomorph-inset-distance)) calc(-1 * var(--neomorph-inset-distance)) var(--neomorph-inset-blur) var(--neomorph-shadow-light);
+}
+
+.history-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  background: var(--neomorph-bg);
+  border-right: 1px solid var(--calculator-border);
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.history-container.show {
+  transform: translateX(0);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--calculator-border);
+}
+
+.history-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.history-clear-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.history-clear-btn:hover {
+  color: var(--text-color);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.history-clear-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.history-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  max-height: calc(100vh - 60px);
+}
+
+.history-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.history-item:hover {
+  background: rgba(100, 100, 255, 0.1);
+}
+
+.history-expression {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+  word-break: break-all;
+}
+
+.history-result {
+  font-size: 18px;
+  color: var(--text-color);
+  font-weight: bold;
+  word-break: break-all;
+}
+
+.history-timestamp {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 5px;
+  text-align: right;
+  font-style: italic;
+}
+
+.history-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.unit-keys {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--calculator-border);
+}
+
+.unit-type-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.unit-type-btn {
+  flex: 1;
+  padding: 12px 8px;
+  font-size: 12px;
+  background: var(--button-background);
+  color: var(--text-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.unit-type-btn i {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.unit-type-btn:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.unit-type-btn.active {
+  background: var(--tab-active);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.unit-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.unit-label {
+  width: 60px;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.unit-select {
+  flex: 1;
+  padding: 12px;
+  background: var(--button-background);
+  color: var(--text-color);
+  border: 1px solid var(--calculator-border);
+  border-radius: 10px;
+  outline: none;
+  appearance: auto; /* Ensure the native dropdown arrow is visible */
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.unit-select:focus {
+  border-color: var(--operator-background);
+  box-shadow: 0 0 0 2px rgba(130, 106, 237, 0.2);
+}
+
+.unit-select option {
+  background-color: #333;
+  color: white;
+  padding: 8px;
+}
+
+.unit-convert-btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 15px;
+  background: var(--operator-background);
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.unit-convert-btn i {
+  font-size: 18px;
+}
+
+.unit-convert-btn:hover {
+  background: var(--operator-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.unit-convert-btn:active {
+  background: var(--operator-active);
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.advanced-keys {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--calculator-border);
+}
+
+.advanced-tabs {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  margin-bottom: 15px;
+  width: 100%;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+  -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none;  /* Hide scrollbar for Firefox */
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  overscroll-behavior-x: contain; /* Prevent scroll chaining */
+  scroll-snap-type: x proximity; /* Improve scroll positioning */
+  justify-content: flex-start; /* Align tabs to the start */
+  touch-action: pan-x; /* Enable horizontal panning */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.advanced-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.advanced-tab-btn {
+  padding: 10px;
+  font-size: 12px;
+  background: var(--neomorph-bg);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 80px;
+  flex: 0 0 auto; /* Don't grow, don't shrink, use auto basis */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    var(--neomorph-distance) var(--neomorph-distance) var(--neomorph-blur) var(--neomorph-shadow-dark),
+    calc(-1 * var(--neomorph-distance)) calc(-1 * var(--neomorph-distance)) var(--neomorph-blur) var(--neomorph-shadow-light);
+  transform: translateY(0);
+  scroll-snap-align: start; /* Improve scroll positioning */
+}
+
+.advanced-tab-btn i {
+  font-size: 14px;
+  margin-bottom: 2px;
+  opacity: 0.9;
+}
+
+.advanced-tab-btn:hover {
+  background: var(--button-hover);
+  transform: translateY(-1px);
+  box-shadow:
+    calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-blur) + 3px) var(--neomorph-shadow-dark),
+    calc(-1 * (var(--neomorph-distance) + 1px)) calc(-1 * (var(--neomorph-distance) + 1px)) calc(var(--neomorph-blur) + 3px) var(--neomorph-shadow-light);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.advanced-tab-btn.active {
+  background: var(--tab-active);
+  transform: none;
+  box-shadow:
+    0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 rgba(255, 255, 255, 0),
+    inset var(--neomorph-inset-distance) var(--neomorph-inset-distance) var(--neomorph-inset-blur) rgba(var(--primary-color), 0.3),
+    inset calc(-1 * var(--neomorph-inset-distance)) calc(-1 * var(--neomorph-inset-distance)) var(--neomorph-inset-blur) rgba(var(--primary-color), 0.05);
+  border-color: rgba(var(--primary-color), 0.2);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.advanced-tab-content {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.advanced-tab-content.active {
+  display: flex !important;
+}
+
+.adv-operator {
+  padding: 10px;
+  margin: 3px;
+  font-size: 14px;
+  background: var(--button-background);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex: 1;
+}
+
+.adv-operator:hover {
+  background: var(--button-hover);
+}
+
+.adv-operator.active {
+  background: var(--operator-active);
+}
+
+.equation-input {
+  margin: 10px 0;
+}
+
+.equation-input input, .equation-input textarea {
+  width: 100%;
+  padding: 10px;
+  background: var(--button-background);
+  color: var(--text-color);
+  border: 1px solid var(--calculator-border);
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  resize: vertical;
+}
+
+.advanced-calc-btn {
+  padding: 12px;
+  font-size: 16px;
+  background: var(--operator-background);
+  margin-top: 10px;
+}
+
+.advanced-calc-btn:hover {
+  background: var(--operator-hover);
+}
+
+.template-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.template-btn {
+  font-size: 12px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.help-keys {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--calculator-border);
+}
+
+.help-tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.help-tab-btn {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  background: var(--neomorph-bg);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  box-shadow:
+    var(--neomorph-distance) var(--neomorph-distance) var(--neomorph-blur) var(--neomorph-shadow-dark),
+    calc(-1 * var(--neomorph-distance)) calc(-1 * var(--neomorph-distance)) var(--neomorph-blur) var(--neomorph-shadow-light);
+  transform: translateY(0);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.help-tab-btn i {
+  font-size: 16px;
+  margin-bottom: 4px;
+  opacity: 0.9;
+}
+
+.help-tab-btn:hover {
+  background: var(--button-hover);
+  transform: translateY(-1px);
+  box-shadow:
+    calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-distance) + 1px) calc(var(--neomorph-blur) + 3px) var(--neomorph-shadow-dark),
+    calc(-1 * (var(--neomorph-distance) + 1px)) calc(-1 * (var(--neomorph-distance) + 1px)) calc(var(--neomorph-blur) + 3px) var(--neomorph-shadow-light);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.help-tab-btn.active {
+  background: var(--tab-active);
+  transform: none;
+  box-shadow:
+    0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 rgba(255, 255, 255, 0),
+    inset var(--neomorph-inset-distance) var(--neomorph-inset-distance) var(--neomorph-inset-blur) rgba(var(--primary-color), 0.3),
+    inset calc(-1 * var(--neomorph-inset-distance)) calc(-1 * var(--neomorph-inset-distance)) var(--neomorph-inset-blur) rgba(var(--primary-color), 0.05);
+  border-color: rgba(var(--primary-color), 0.2);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.help-tab-content {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.help-tab-content.active {
+  display: flex !important;
+}
+
+.examples-section, .templates-section {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.examples-section h4, .templates-section h4 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.voice-commands-list {
+  margin: 10px 0;
+  padding-left: 20px;
+  color: var(--text-color);
+}
+
+.voice-commands-list li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.voice-permission-note {
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(255, 200, 50, 0.1);
+  border-left: 3px solid rgba(255, 200, 50, 0.5);
+  border-radius: 5px;
+}
+
+.voice-permission-note p {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+}
+
+.voice-permission-note ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.voice-permission-note li {
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.example-buttons, .template-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.example-btn, .template-btn {
+  font-size: 12px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  flex: 1;
+  min-width: 120px;
+}
+
+.quiz-container {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+#quiz-question {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+#quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.quiz-option {
+  padding: 10px;
+  background: var(--button-background);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: 1px solid var(--calculator-border);
+}
+
+.quiz-option:hover {
+  background: var(--button-hover);
+}
+
+.quiz-option.correct {
+  background: var(--quiz-correct);
+}
+
+.quiz-option.incorrect {
+  background: var(--quiz-incorrect);
+}
+
+#quiz-feedback {
+  margin: 10px 0;
+  color: var(--text-color);
+  font-style: italic;
+}
+
+#quiz-solution {
+  display: none;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#quiz-solution.active {
+  display: block;
+}
+
+#new-quiz-btn {
+  align-self: center;
+  width: 80%;
+  margin-top: 15px;
+  background: var(--operator-background);
+}
+
+.solution-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.solution-modal.active {
+  display: flex;
+}
+
+.solution-modal-content {
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 15px;
+  max-width: 500px;
+  width: 90%;
+  padding: 20px;
+  border: 1px solid var(--calculator-border);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.close-modal {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+#solution-title {
+  margin-top: 0;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.solution-step {
+  margin: 15px 0;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+  color: var(--text-color);
+}
+
+.step-number {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.quiz-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.quiz-nav-btn {
+  padding: 8px 15px;
+  background: var(--button-background);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quiz-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#quiz-progress {
+  color: var(--text-color);
+}
+
+.quiz-explanation {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  color: var(--text-color);
+  display: none;
+}
+
+.quiz-explanation.active {
+  display: block !important;
+}
+
+.quiz-start-btn {
+  padding: 12px;
+  margin: 10px 0;
+  background: var(--operator-background);
+  font-size: 16px;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+  .calculator {
+    width: 95%;
+    max-width: 400px;
+    min-width: 320px;
+    margin: 10px auto;
+  }
+
+  #display {
+    font-size: 28px;
+  }
+
+  button {
+    padding: 12px 5px;
+    font-size: 16px;
+  }
+
+  .advanced-tabs {
+    gap: 6px;
+    padding-bottom: 8px;
+    padding-left: 2px;
+    padding-right: 2px;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+
+  .advanced-tab-btn {
+    min-width: 60px;
+    padding: 8px 4px;
+    font-size: 11px;
+    flex: 0 0 auto;
+  }
+
+  .advanced-tab-btn i {
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+
+  .tab-text {
+    font-size: 10px;
+  }
+
+  .help-tab-btn {
+    font-size: 11px;
+    padding: 8px 5px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .calculator {
+    min-width: 280px;
+  }
+
+  .advanced-tab-btn {
+    min-width: 50px;
+    padding: 6px 2px;
+    font-size: 10px;
+    flex: 0 0 auto;
+  }
+
+  .tab-text {
+    font-size: 9px;
+  }
+
+  .voice-controls {
+    gap: 4px;
+  }
+
+  .voice-btn, .voice-help-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
