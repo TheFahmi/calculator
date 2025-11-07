@@ -629,7 +629,13 @@ const Calculator: React.FC = () => {
   return (
     <div className="calculator-container">
       <div className="calculator-header">
-        <h1>Next.js Calculator</h1>
+        <div>
+          <h1>Next.js Calculator</h1>
+          <p className="calculator-tagline">
+            A multi-mode workspace for everyday math, conversions, and study helpers—crafted with
+            a modern glassmorphism aesthetic.
+          </p>
+        </div>
         <ThemeToggle />
       </div>
       
